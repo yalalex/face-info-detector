@@ -1,0 +1,27 @@
+.bounding-box {
+  position: absolute;
+  box-shadow: 0 0 0 3px #149df2 inset;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  cursor: pointer;
+  font-size: small;
+ 
+}
+
+.showme { 
+  display: none;
+  color: white;
+  background-color: black;
+  opacity: .7;
+  margin-top: 110%;
+
+}
+
+.showhim:hover .showme {
+  display : block;
+}
+
+.inthebox {
+	margin: auto;
+}

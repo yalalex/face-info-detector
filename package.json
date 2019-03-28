@@ -2,13 +2,20 @@
   "name": "face-rec",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://yalouskikh.github.io/face-info-detector",
   "dependencies": {
+    "gh-pages": "^2.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "2.1.8"
+    "react-particles-js": "^2.5.1",
+    "react-scripts": "2.1.8",
+    "react-tilt": "^0.1.4",
+    "tachyons": "^4.11.1"
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

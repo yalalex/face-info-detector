@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/face-info-detector/static/css/2.170b55b2.chunk.css"
   },
   {
-    "revision": "dad4eb9fcc5bb4305226e95219809ba7",
+    "revision": "ac7e736b75feca138369ba51031bce6c",
     "url": "/face-info-detector/index.html"
   }
 ];

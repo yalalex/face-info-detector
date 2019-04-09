@@ -26,7 +26,12 @@ class Signin extends React.Component {
         password: this.state.signInPassword
       })
     })
-      .then(response => response.json())
+      .then(response => {
+        if (response.status === 400) {
+          this.signInErr('Wrong credentials');
+        }
+        return response.json();
+      })
       .then(user => {
         if (user.id) {
           this.props.loadUser(user)
@@ -34,6 +39,21 @@ class Signin extends React.Component {
         }
       })
   }
+
+  signInErr = (err) => {
+    const errorDiv = document.createElement('div');
+    const errorP = document.createElement('p')
+    errorDiv.className = 'lh-copy mt3';
+    errorP.className = 'f6 purple';
+    errorDiv.appendChild(errorP);
+    errorP.textContent = err;
+
+    const card = document.querySelector('.measure');
+    const firstLink = document.getElementById('registerlink');
+
+    card.insertBefore(errorDiv, firstLink);
+  }
+
 
   render() {
     const { onRouteChange } = this.props;
@@ -72,7 +92,7 @@ class Signin extends React.Component {
                 value="Sign in"
               />
             </div>
-            <div className="lh-copy mt3">
+            <div className="lh-copy mt3" id="registerlink">
               <p  onClick={() => onRouteChange('register')} className="f6 link dim black db pointer">Register</p>
             </div>
             <div className="lh-copy mt3">

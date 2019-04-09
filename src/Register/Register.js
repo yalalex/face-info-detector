@@ -32,13 +32,32 @@ class Register extends React.Component {
         name: this.state.name
       })
     })
-      .then(response => response.json())
+      .then(response => {
+        if (response.status === 400) {
+            this.registerErr('Unable to register');
+          }
+          return response.json();
+      })
       .then(user => {
         if (user.id) {
           this.props.loadUser(user)
           this.props.onRouteChange('home');
         }
       })
+  }
+
+  registerErr = (err) => {
+    const errorDiv = document.createElement('div');
+    const errorP = document.createElement('p')
+    errorDiv.className = 'lh-copy mt3';
+    errorP.className = 'f6 purple';
+    errorDiv.appendChild(errorP);
+    errorP.textContent = err;
+
+    const card = document.querySelector('.measure');
+    const firstLink = document.getElementById('corlink');
+
+    card.insertBefore(errorDiv, firstLink);
   }
 
   render() {
@@ -87,7 +106,7 @@ class Register extends React.Component {
                 value="Register"
               />
             </div>
-            <div className="lh-copy mt3">
+            <div className="lh-copy mt3" id="corlink">
               <p  onClick={() => this.props.onRouteChange('home')} className="f6 link dim black db pointer">Continue without regisration</p>
             </div>
           </div>

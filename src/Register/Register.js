@@ -49,8 +49,8 @@ class Register extends React.Component {
   registerErr = (err) => {
     const errorDiv = document.createElement('div');
     const errorP = document.createElement('p')
-    errorDiv.className = 'lh-copy mt3';
-    errorP.className = 'f6 purple';
+    errorDiv.className = 'alert lh-copy mt3';
+    errorP.className = 'f6 red';
     errorDiv.appendChild(errorP);
     errorP.textContent = err;
 
@@ -58,7 +58,12 @@ class Register extends React.Component {
     const firstLink = document.getElementById('corlink');
 
     card.insertBefore(errorDiv, firstLink);
+    setTimeout(this.clearError, 3000);
   }
+
+  clearError = () => {
+    document.querySelector('.alert').remove();
+  } 
 
   render() {
     return (

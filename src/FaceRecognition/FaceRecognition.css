@@ -9,7 +9,7 @@
  
 }
 
-.showme { 
+.showinfo { 
   display: none;
   color: white;
   background-color: black;
@@ -18,7 +18,7 @@
 
 }
 
-.showhim:hover .showme {
+.bounding-box:hover .showinfo {
   display : block;
 }
 

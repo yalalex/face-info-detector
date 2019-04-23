@@ -41,6 +41,7 @@ class Signin extends React.Component {
   }
 
   signInErr = (err) => {
+    this.clearError();
     const errorDiv = document.createElement('div');
     const errorP = document.createElement('p')
     errorDiv.className = 'alert lh-copy mt3';
@@ -52,11 +53,15 @@ class Signin extends React.Component {
     const firstLink = document.getElementById('registerlink');
 
     card.insertBefore(errorDiv, firstLink);
+    
     setTimeout(this.clearError, 3000);
   }
 
   clearError = () => {
-    document.querySelector('.alert').remove();
+    const currentAlert = document.querySelector('.alert');
+    if (currentAlert) {
+      currentAlert.remove();
+    }
   } 
 
 

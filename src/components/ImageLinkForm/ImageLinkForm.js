@@ -5,7 +5,7 @@ const ImageLinkForm = ({ onInputChange, onButtonSubmit }) => {
   return (
     <div>
       <p className='white f3'>
-        This app detects person's sex, age and race on the picture.
+        This app detects person's gender, age and race on the picture.
       </p>
       <div className='center'>
         <div className='form center pa4 br3 shadow-5'>

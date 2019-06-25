@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import Particles from 'react-particles-js';
-import FaceRecognition from './FaceRecognition/FaceRecognition';
-import Navigation from './Navigation/Navigation';
-import Signin from './Signin/Signin';
-import Register from './Register/Register';
-import Logo from './Logo/Logo';
-import ImageLinkForm from './ImageLinkForm/ImageLinkForm';
-import Rank from './Rank/Rank';
-import Footer from './Footer/Footer';
+import FaceRecognition from './components/FaceRecognition/FaceRecognition';
+import Navigation from './components/Navigation/Navigation';
+import Signin from './components/Signin/Signin';
+import Register from './components/Register/Register';
+import Logo from './components/Logo/Logo';
+import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
+import Rank from './components/Rank/Rank';
+import Footer from './components/Footer/Footer';
 import './App.css';
 
 const particlesOptions = {
@@ -124,7 +124,6 @@ class App extends Component {
     } else if (route === 'home') {
       this.setState({isSignedIn: true, imageUrl: ''})
     }
-    
     this.setState({route: route});
   }
 

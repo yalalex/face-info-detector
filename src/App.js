@@ -8,6 +8,7 @@ import Logo from './components/Logo/Logo';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank';
 import Footer from './components/Footer/Footer';
+import Err from './components/Err/Err';
 import './App.css';
 
 const particlesOptions = {
@@ -28,6 +29,7 @@ const initialState = {
   box: [],
   route: 'signin',
   isSignedIn: false,
+  errMessage: '',
   user: {
     id: '1',
     name: 'Guest',
@@ -86,7 +88,8 @@ class App extends Component {
   }
 
   onButtonSubmit = () => {
-    this.setState({imageUrl: this.state.input});
+    this.setState({imageUrl: this.state.input,
+                   errMessage: ''});
       fetch('https://lit-island-91206.herokuapp.com/imageurl', {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
@@ -109,11 +112,12 @@ class App extends Component {
               this.setState(Object.assign(this.state.user, { entries: count}))
             })
             .catch(console.log)
-
         }
         this.displayFaceBox(this.calculateFaceLocation(response))
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err);
+        this.setState({errMessage: 'Wrong URL'})});
   }
 
   onRouteChange = (route) => {
@@ -146,6 +150,7 @@ class App extends Component {
                 onInputChange={this.onInputChange}
                 onButtonSubmit={this.onButtonSubmit}
               />
+              <Err message={this.state.errMessage} />
               <FaceRecognition box={box} imageUrl={imageUrl} />
             </div>
           : (

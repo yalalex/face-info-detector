@@ -7,10 +7,7 @@ class Signin extends React.Component {
     this.state = {
       signInEmail: '',
       signInPassword: '',
-      err: {
-        isOn: false,
-        message: ''
-      }
+      errMessage: ''
     }
   }
 
@@ -33,10 +30,7 @@ class Signin extends React.Component {
     })
       .then(response => {
         if (response.status === 400) {
-          this.setState({err: {
-            isOn: true,
-            message: 'Wrong Credentials'
-          }});
+          this.setState({errMessage: 'Wrong Credentials'});
         }
         return response.json();
       })
@@ -85,7 +79,7 @@ class Signin extends React.Component {
                 value="Sign in"
               />
             </div>
-            <Err message={this.state.err.message} />
+            <Err message={this.state.errMessage} />
             <div className="lh-copy mt3">
               <p  onClick={() => onRouteChange('register')} className="f6 link dim black db pointer">Register</p>
             </div>

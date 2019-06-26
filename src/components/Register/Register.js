@@ -8,10 +8,7 @@ class Register extends React.Component {
       email: '',
       password: '',
       name: '',
-      err: {
-        isOn: false,
-        message: ''
-      }
+      errMessage: ''
     }
   }
 
@@ -39,10 +36,7 @@ class Register extends React.Component {
     })
       .then(response => {
         if (response.status === 400) {
-          this.setState({err: {
-            isOn: true,
-            message: 'Unable to register'
-          }});
+          this.setState({errMessage: 'Unable to register'});
           }
           return response.json();
       })
@@ -100,7 +94,7 @@ class Register extends React.Component {
                 value="Register"
               />
             </div>
-            <Err message={this.state.err.message} />
+            <Err message={this.state.errMessage} />
             <div className="lh-copy mt3" id="corlink">
               <p  onClick={() => this.props.onRouteChange('home')} className="f6 link dim black db pointer">Continue without regisration</p>
             </div>

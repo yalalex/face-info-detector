@@ -126,7 +126,7 @@ class App extends Component {
     } else if (route === 'home' && this.state.user.name === 'Guest') {
       this.setState({isSignedIn: false})
     } else if (route === 'home') {
-      this.setState({isSignedIn: true, imageUrl: ''})
+      this.setState({isSignedIn: true, input: '', imageUrl: ''})
     }
     this.setState({route: route});
   }

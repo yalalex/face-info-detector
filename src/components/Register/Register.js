@@ -42,7 +42,7 @@ class Register extends React.Component {
       })
       .then(user => {
         if (user.id) {
-          this.props.loadUser(user)
+          this.props.loadUser(user);
           this.props.onRouteChange('home');
         }
       })
@@ -96,7 +96,7 @@ class Register extends React.Component {
             </div>
             <Err message={this.state.errMessage} />
             <div className="lh-copy mt3" id="corlink">
-              <p  onClick={() => this.props.onRouteChange('home')} className="f6 link dim black db pointer">Continue without regisration</p>
+              <p  onClick={() => this.props.onRouteChange('home')} className="f6 link dim black db pointer">Continue without registration</p>
             </div>
           </div>
         </main>

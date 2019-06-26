@@ -4,15 +4,15 @@ self.__precacheManifest = [
     "url": "/face-info-detector/static/js/runtime~main.c4827bcd.js"
   },
   {
-    "revision": "596d37047b9fcbf80510",
-    "url": "/face-info-detector/static/js/main.0b7430ea.chunk.js"
+    "revision": "3445f33de8165a60b1c5",
+    "url": "/face-info-detector/static/js/main.6c28e377.chunk.js"
   },
   {
     "revision": "dd70fd3d66f957913ad3",
     "url": "/face-info-detector/static/js/2.123542bf.chunk.js"
   },
   {
-    "revision": "596d37047b9fcbf80510",
+    "revision": "3445f33de8165a60b1c5",
     "url": "/face-info-detector/static/css/main.4c07104b.chunk.css"
   },
   {
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/face-info-detector/static/css/2.6ea6da10.chunk.css"
   },
   {
-    "revision": "10c694ee6b2407aa30b45ce4f0efb793",
+    "revision": "89196651940fe2cc1d888dd894f0c8dc",
     "url": "/face-info-detector/index.html"
   }
 ];

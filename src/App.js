@@ -121,15 +121,16 @@ class App extends Component {
   }
 
   onRouteChange = (route) => {
-    if (route === 'signout') {
+    if (this.state.user.name === 'Guest') {
+      if (route === 'home') {this.setState({isSignedIn: false})}
+      else if (route === 'signin') {this.setState(initialState)}
+      }  
+    else if (route === 'signout') {
       this.setState(initialState)
-    } else if (route === 'home' && this.state.user.name === 'Guest') {
-      this.setState({isSignedIn: false})
-    } else if (route === 'home') {
-      this.setState({isSignedIn: true, input: '', imageUrl: ''})
     }
+    else if (route === 'home') {this.setState({isSignedIn: true})}
     this.setState({route: route});
-  }
+  }    
 
   render() {
     const { isSignedIn, imageUrl, route, box } = this.state;

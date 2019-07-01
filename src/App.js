@@ -127,7 +127,7 @@ class App extends Component {
         console.log(err.message);
         if (err.message === "Cannot read property '0' of undefined") {
           this.setState({
-            errMessage: 'Please check the URL and try again'
+            errMessage: 'Not a picture. Please check the URL and try again'
           });
         } else {
           this.setState({

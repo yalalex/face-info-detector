@@ -125,7 +125,12 @@ class App extends Component {
       })
       .catch(err => {
         console.log(err);
-        this.setState({ errMessage: 'Wrong URL' });
+        this.setState({
+          errMessage: 'Something went wrong. Check the URL and try again'
+        });
+        setTimeout(() => {
+          this.setState({ errMessage: '' });
+        }, 5000);
       });
   };
 

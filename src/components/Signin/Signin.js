@@ -31,6 +31,9 @@ class Signin extends React.Component {
       .then(response => {
         if (response.status === 400) {
           this.setState({ errMessage: 'Wrong Credentials' });
+          setTimeout(() => {
+            this.setState({ errMessage: '' });
+          }, 3000);
         }
         return response.json();
       })

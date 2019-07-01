@@ -124,10 +124,16 @@ class App extends Component {
         this.displayFaceBox(this.calculateFaceLocation(response));
       })
       .catch(err => {
-        console.log(err);
-        this.setState({
-          errMessage: 'Something went wrong. Check the URL and try again'
-        });
+        console.log(err.message);
+        if (err.message === "Cannot read property '0' of undefined") {
+          this.setState({
+            errMessage: 'Please check the URL and try again'
+          });
+        } else {
+          this.setState({
+            errMessage: 'No faces detected. Try another picture'
+          });
+        }
         setTimeout(() => {
           this.setState({ errMessage: '' });
         }, 5000);

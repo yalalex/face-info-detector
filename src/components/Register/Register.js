@@ -36,7 +36,9 @@ class Register extends React.Component {
     })
       .then(response => {
         if (response.status === 400) {
-          this.setState({ errMessage: 'Unable to register' });
+          this.setState({
+            errMessage: 'Please enter the correct data'
+          });
           setTimeout(() => {
             this.setState({ errMessage: '' });
           }, 3000);

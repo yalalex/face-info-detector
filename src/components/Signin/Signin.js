@@ -6,8 +6,7 @@ class Signin extends React.Component {
     super(props);
     this.state = {
       signInEmail: '',
-      signInPassword: '',
-      errMessage: ''
+      signInPassword: ''
     };
   }
 
@@ -30,10 +29,7 @@ class Signin extends React.Component {
     })
       .then(response => {
         if (response.status === 400) {
-          this.setState({ errMessage: 'Wrong Credentials' });
-          setTimeout(() => {
-            this.setState({ errMessage: '' });
-          }, 3000);
+          this.props.setAlert('Wrong Credentials', 3000);
         }
         return response.json();
       })
@@ -46,7 +42,7 @@ class Signin extends React.Component {
   };
 
   render() {
-    const { onRouteChange } = this.props;
+    const { onRouteChange, alert } = this.props;
     return (
       <article className='br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center'>
         <main className='pa4 black-80'>
@@ -86,7 +82,7 @@ class Signin extends React.Component {
                 value='Sign in'
               />
             </div>
-            <Err message={this.state.errMessage} />
+            <Err message={alert} />
             <div className='lh-copy mt3'>
               <p
                 onClick={() => onRouteChange('register')}

@@ -29,7 +29,7 @@ const initialState = {
   box: [],
   route: 'signin',
   isSignedIn: false,
-  errMessage: '',
+  alert: '',
   user: {
     id: '1',
     name: 'Guest',
@@ -97,7 +97,7 @@ class App extends Component {
   };
 
   onButtonSubmit = () => {
-    this.setState({ imageUrl: this.state.input, errMessage: '' });
+    this.setState({ imageUrl: this.state.input, alert: '' });
     fetch('https://lit-island-91206.herokuapp.com/imageurl', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
@@ -126,17 +126,13 @@ class App extends Component {
       .catch(err => {
         console.log(err.message);
         if (err.message === "Cannot read property '0' of undefined") {
-          this.setState({
-            errMessage: 'Not a picture. Please check the URL and try again'
-          });
+          this.setAlert(
+            'Not a picture. Please check the URL and try again',
+            10000
+          );
         } else {
-          this.setState({
-            errMessage: 'No faces detected. Try another picture'
-          });
+          this.setAlert('No faces detected. Please try another picture', 10000);
         }
-        setTimeout(() => {
-          this.setState({ errMessage: '' });
-        }, 5000);
       });
   };
 
@@ -153,6 +149,13 @@ class App extends Component {
       this.setState({ isSignedIn: true });
     }
     this.setState({ route: route });
+  };
+
+  setAlert = (msg, timeout) => {
+    this.setState({ alert: msg });
+    setTimeout(() => {
+      this.setState({ alert: '' });
+    }, timeout);
   };
 
   render() {
@@ -175,15 +178,22 @@ class App extends Component {
               onInputChange={this.onInputChange}
               onButtonSubmit={this.onButtonSubmit}
             />
-            <Err message={this.state.errMessage} />
+            <Err message={this.state.alert} />
             <FaceRecognition box={box} imageUrl={imageUrl} />
           </div>
         ) : route === 'signin' ? (
-          <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+          <Signin
+            loadUser={this.loadUser}
+            onRouteChange={this.onRouteChange}
+            setAlert={this.setAlert}
+            alert={this.state.alert}
+          />
         ) : (
           <Register
             loadUser={this.loadUser}
             onRouteChange={this.onRouteChange}
+            setAlert={this.setAlert}
+            alert={this.state.alert}
           />
         )}
         <Footer />

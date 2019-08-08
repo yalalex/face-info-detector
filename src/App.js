@@ -7,7 +7,6 @@ import Register from './components/Register/Register';
 import Logo from './components/Logo/Logo';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank';
-import Footer from './components/Footer/Footer';
 import Err from './components/Err/Err';
 import './App.css';
 
@@ -196,7 +195,6 @@ class App extends Component {
             alert={this.state.alert}
           />
         )}
-        <Footer />
       </div>
     );
   }

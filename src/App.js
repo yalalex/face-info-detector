@@ -61,19 +61,13 @@ class App extends Component {
     const width = Number(image.width);
     const height = Number(image.height);
     const box = [];
-    data.outputs[0].data.regions.map((face, i) => {
-      let clarifaiFace =
-        data.outputs[0].data.regions[i].region_info.bounding_box;
-      let age =
-        data.outputs[0].data.regions[i].data.face.age_appearance.concepts[0]
-          .name;
-      let sex =
-        data.outputs[0].data.regions[i].data.face.gender_appearance.concepts[0]
-          .name;
+    const faces = data.outputs[0].data.regions;
+    faces.map(face => {
+      let clarifaiFace = face.region_info.bounding_box;
+      let age = face.data.face.age_appearance.concepts[0].name;
+      let sex = face.data.face.gender_appearance.concepts[0].name;
       let gender = sex === 'masculine' ? 'male' : 'female';
-      let race =
-        data.outputs[0].data.regions[i].data.face.multicultural_appearance
-          .concepts[0].name;
+      let race = face.data.face.multicultural_appearance.concepts[0].name;
       return box.push({
         leftCol: clarifaiFace.left_col * width,
         topRow: clarifaiFace.top_row * height,

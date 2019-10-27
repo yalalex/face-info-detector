@@ -82,7 +82,7 @@ class App extends Component {
   };
 
   displayFaceBox = box => {
-    this.setState({ box: box });
+    this.setState({ box });
   };
 
   onInputChange = event => {
@@ -152,7 +152,7 @@ class App extends Component {
   };
 
   render() {
-    const { isSignedIn, imageUrl, route, box } = this.state;
+    const { isSignedIn, imageUrl, route, box, alert, user } = this.state;
     return (
       <div className='App'>
         <Particles className='particles' params={particlesOptions} />
@@ -163,15 +163,12 @@ class App extends Component {
         {route === 'home' ? (
           <div>
             <Logo />
-            <Rank
-              name={this.state.user.name}
-              entries={this.state.user.entries}
-            />
+            <Rank name={user.name} entries={user.entries} />
             <ImageLinkForm
               onInputChange={this.onInputChange}
               onButtonSubmit={this.onButtonSubmit}
             />
-            <Err message={this.state.alert} />
+            <Err message={alert} />
             <FaceRecognition box={box} imageUrl={imageUrl} />
           </div>
         ) : route === 'signin' ? (
@@ -179,14 +176,14 @@ class App extends Component {
             loadUser={this.loadUser}
             onRouteChange={this.onRouteChange}
             setAlert={this.setAlert}
-            alert={this.state.alert}
+            alert={alert}
           />
         ) : (
           <Register
             loadUser={this.loadUser}
             onRouteChange={this.onRouteChange}
             setAlert={this.setAlert}
-            alert={this.state.alert}
+            alert={alert}
           />
         )}
       </div>

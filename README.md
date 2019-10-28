@@ -2,4 +2,4 @@
 
 Front-End: React.js
 
-Back-End: Node.js + Express.js + PostgreSQL + Clarifai API
+Back-End: Node.js (Express.js) + PostgreSQL + Clarifai API

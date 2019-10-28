@@ -1,4 +1,4 @@
-<b>Full stack web-application for detecting person's gender, age and race on the URL-based picture.</b>
+<b>Full stack web-application for detecting persons' gender, age and race on the URL-based picture.</b>
 
 Front-End: React.js
 
